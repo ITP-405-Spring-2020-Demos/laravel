@@ -3,6 +3,7 @@
     <tr>
       <th>ID</th>
       <th>Date</th>
+      <th>Customer</th>
       <th colspan="2">Total</th>
     </tr>
   </thead>
@@ -14,6 +15,9 @@
         </td>
         <td>
           {{$invoice->InvoiceDate}}
+        </td>
+        <td>
+          {{$invoice->FirstName}} {{$invoice->LastName}}
         </td>
         <td>
           ${{$invoice->Total}}
