@@ -3,6 +3,7 @@
     <tr>
       <th>ID</th>
       <th>Date</th>
+      <th>Customer</th>
       <th colspan="2">Total</th>
     </tr>
   </thead>
@@ -13,7 +14,10 @@
           {{$invoice->InvoiceId}}
         </td>
         <td>
-          {{$invoice->InvoiceDate}}
+          {{date_format(date_create($invoice->InvoiceDate), 'n/j/Y')}}
+        </td>
+        <td>
+          {{$invoice->FirstName}} {{$invoice->LastName}}
         </td>
         <td>
           ${{$invoice->Total}}
