@@ -7,15 +7,22 @@ use DB;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $invoices = DB::table('invoices')
             ->join('customers', 'invoices.CustomerId', '=', 'customers.CustomerId')
-            ->orderBy('InvoiceDate', 'desc')
-            ->get();
+            ->orderBy('InvoiceDate', 'desc');
+
+        $customerQueryStringParam = $request->query('customer');
+
+        if ($customerQueryStringParam) {
+            $invoices->where('customers.FirstName', 'LIKE', "%$customerQueryStringParam%");
+            $invoices->orWhere('customers.LastName', 'LIKE', "%$customerQueryStringParam%");
+        }
 
         return view('invoice.index', [
-            'invoices' => $invoices
+            'invoices' => $invoices->get(),
+            'customerQueryStringParam' => $customerQueryStringParam
         ]);
     }
 
