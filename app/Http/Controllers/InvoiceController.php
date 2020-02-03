@@ -9,8 +9,10 @@ class InvoiceController extends Controller
 {
     public function index()
     {
-        $invoices = DB::table('invoices')->get();
-        // dd($invoices);
+        $invoices = DB::table('invoices')
+            ->join('customers', 'invoices.CustomerId', '=', 'customers.CustomerId')
+            ->get();
+
         return view('invoice.index', [
             'invoices' => $invoices
         ]);
