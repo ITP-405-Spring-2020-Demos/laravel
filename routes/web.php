@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/invoices', 'InvoiceController@index');
+Route::get('/invoices/{id}', 'InvoiceController@show');
