@@ -30,7 +30,7 @@
             ${{$invoice->Total}}
           </td>
           <td>
-            <a href="invoice-details.php?invoice={{$invoice->InvoiceId}}">
+            <a href="/invoices/{{$invoice->InvoiceId}}">
               Details
             </a>
           </td>
