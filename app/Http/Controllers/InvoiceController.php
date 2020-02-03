@@ -11,6 +11,7 @@ class InvoiceController extends Controller
     {
         $invoices = DB::table('invoices')
             ->join('customers', 'invoices.CustomerId', '=', 'customers.CustomerId')
+            ->orderBy('InvoiceDate', 'desc')
             ->get();
 
         return view('invoice.index', [
