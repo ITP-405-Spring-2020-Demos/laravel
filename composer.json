@@ -8,6 +8,7 @@
     ],
     "license": "MIT",
     "require": {
+        "ext-pdo_sqlite": "*",
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
