@@ -6,3 +6,4 @@ Route::get('/', function () {
 
 Route::get('/invoices', 'InvoiceController@index');
 Route::get('/invoices/{id}', 'InvoiceController@show');
+Route::get('/albums', 'AlbumController@index');
