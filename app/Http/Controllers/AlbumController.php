@@ -10,7 +10,7 @@ class AlbumController extends Controller
     public function index()
     {
         $albums = DB::table('albums')
-            ->select('albums.Title', 'artists.Name as ArtistName')
+            ->select('albums.AlbumId', 'albums.Title', 'artists.Name as ArtistName')
             ->join('artists', 'albums.ArtistId', '=', 'artists.ArtistId')
             ->orderBy('ArtistName')
             ->orderBy('Title')
@@ -47,5 +47,37 @@ class AlbumController extends Controller
         return redirect()
             ->route('albums')
             ->with('success', "Successfully created {$artist->Name} - {$request->input('title')}");
+    }
+
+    public function deleteConfirmation($id)
+    {
+        $album = DB::table('albums')->where('AlbumId', '=', $id)->first();
+        $artist = DB::table('artists')->where('ArtistId', '=', $album->ArtistId)->first();
+
+        return view('album.delete-confirmation', [
+            'album' => $album,
+            'artist' => $artist
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $album = DB::table('albums')->where('AlbumId', '=', $id)->first();
+
+        $this->deleteAlbum($id);
+
+        return redirect()
+            ->route('albums')
+            ->with('success', "Album {$album->Title} successfully deleted");
+    }
+
+    private function deleteAlbum($id)
+    {
+        $trackIds = DB::table('tracks')->where('AlbumId', '=', $id)->get()->pluck('TrackId');
+
+        DB::table('invoice_items')->whereIn('TrackId', $trackIds)->delete();
+        DB::table('playlist_track')->whereIn('TrackId', $trackIds)->delete();
+        DB::table('tracks')->whereIn('TrackId', $trackIds)->delete();
+        DB::table('albums')->where('AlbumId', '=', $id)->delete();
     }
 }

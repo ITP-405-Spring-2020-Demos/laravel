@@ -19,6 +19,7 @@
             <tr>
                 <th>Album</th>
                 <th>Artist</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,9 @@
                     </td>
                     <td>
                         {{$album->ArtistName}}
+                    </td>
+                    <td>
+                        <a href="/albums/{{$album->AlbumId}}/delete">Delete</a>
                     </td>
                 </tr>
             @endforeach
