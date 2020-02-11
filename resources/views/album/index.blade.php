@@ -4,6 +4,9 @@
 @section('header', 'Albums')
 
 @section('content')
+    <div class="text-right mb-3">
+        <a href="/albums/create" class="btn btn-primary">Add Album</a>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
