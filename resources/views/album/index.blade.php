@@ -4,6 +4,11 @@
 @section('header', 'Albums')
 
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="text-right mb-3">
         <a href="/albums/create" class="btn btn-primary">Add Album</a>
     </div>
