@@ -8,7 +8,12 @@
         @csrf
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" class="form-control">
+            <input
+                type="text"
+                id="title"
+                name="title"
+                class="form-control"
+                value="{{ old('title') }}">
             @error('title')
                 <small class="text-danger">{{$message}}</small>
             @enderror
@@ -18,7 +23,9 @@
             <select name="artist" id="artist" class="form-control">
                 <option value="">-- Select Artist --</option>
                 @foreach ($artists as $artist)
-                    <option value="{{$artist->ArtistId}}">
+                    <option
+                        value="{{$artist->ArtistId}}"
+                        {{$artist->ArtistId === old('artist') ? "selected" : ""}}>
                         {{$artist->Name}}
                     </option>
                 @endforeach
