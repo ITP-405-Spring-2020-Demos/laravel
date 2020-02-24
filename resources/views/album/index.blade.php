@@ -24,7 +24,7 @@
             @foreach ($albums as $album)
                 <tr>
                     <td>{{$album->Title}}</td>
-                    <td>{{$album->ArtistName}}</td>
+                    <td>{{$album->artist->Name}}</td>
                     <td>
                         <a href="/albums/{{$album->AlbumId}}/delete">Delete</a>
                     </td>
