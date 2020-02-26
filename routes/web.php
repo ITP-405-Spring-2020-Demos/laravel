@@ -65,3 +65,5 @@ Route::post('/albums', 'AlbumController@store');
 Route::get('/albums/{id}/delete', 'AlbumController@deleteConfirmation');
 Route::post('/albums/{id}/delete', 'AlbumController@destroy');
 
+Route::get('/playlists', 'PlaylistController@index');
+Route::get('/playlists/{id}', 'PlaylistController@show');

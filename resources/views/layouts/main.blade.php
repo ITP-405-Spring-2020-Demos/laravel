@@ -20,6 +20,9 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/playlists">Playlists</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/albums">Albums</a>
           </li>
           <li class="nav-item">
