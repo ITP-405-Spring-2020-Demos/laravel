@@ -55,7 +55,7 @@ Route::get('/eloquent', function() {
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Route::get('/invoices', 'InvoiceController@index');
 Route::get('/invoices/{id}', 'InvoiceController@show');
@@ -70,5 +70,6 @@ Route::get('/playlists/{id}', 'PlaylistController@show');
 
 Route::get('/signup', 'RegisterController@showRegistrationForm');
 Route::post('/signup', 'RegisterController@register');
+Route::get('/logout', 'LogoutController');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
