@@ -65,5 +65,17 @@ Route::post('/albums', 'AlbumController@store');
 Route::get('/albums/{id}/delete', 'AlbumController@deleteConfirmation');
 Route::post('/albums/{id}/delete', 'AlbumController@destroy');
 
-Route::get('/playlists', 'PlaylistController@index');
-Route::get('/playlists/{id}', 'PlaylistController@show');
+Route::get('/playlists', 'PlaylistController@index')->name('playlists');
+Route::get('/playlists/new', 'PlaylistController@create');
+Route::post('/playlists', 'PlaylistController@store');
+Route::get('/playlists/{id}/edit', 'PlaylistController@edit')->name('playlist.edit');
+Route::post('/playlists/{id}/edit', 'PlaylistController@update');
+Route::get('/playlists/{id}/delete', 'PlaylistController@showDeleteConfirmation')
+    ->name('playlist.delete-confirmation');
+Route::post('/playlists/{id}/delete', 'PlaylistController@delete')
+    ->name('playlist.delete');
+Route::get('/playlists/{id}', 'PlaylistController@show')->name('playlist');
+
+Route::get('/tracks', 'TrackController@index');
+Route::get('/tracks/{id}/add-to-playlist', 'TrackController@showAddToPlaylistForm');
+Route::post('/tracks/{id}/add-to-playlist', 'TrackController@addToPlaylist');

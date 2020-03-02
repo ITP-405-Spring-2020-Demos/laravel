@@ -1,27 +1,26 @@
 @extends('layouts.main')
 
-@section('title', 'Albums')
-@section('header', 'Albums')
+@section('title', 'Tracks')
+@section('header', 'Tracks')
 
 @section('content')
-    <div class="text-right mb-3">
-        <a href="/albums/create" class="btn btn-primary">Add Album</a>
-    </div>
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>Track</th>
                 <th>Album</th>
                 <th>Artist</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($albums as $album)
+            @foreach ($tracks as $track)
                 <tr>
-                    <td>{{$album->Title}}</td>
-                    <td>{{$album->ArtistName}}</td>
+                    <td>{{$track->TrackName}}</td>
+                    <td>{{$track->AlbumTitle}}</td>
+                    <td>{{$track->ArtistName}}</td>
                     <td>
-                        <a href="/albums/{{$album->AlbumId}}/delete">Delete</a>
+                        <a href="/tracks/{{$track->TrackId}}/add-to-playlist">Add to Playlist</a>
                     </td>
                 </tr>
             @endforeach
