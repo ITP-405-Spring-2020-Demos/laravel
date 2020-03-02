@@ -120,7 +120,7 @@ class PlaylistController extends Controller
             ->route('playlists')
             ->with(
                 'success',
-                "The {$playlist->Name} was successfully deleted"
+                "The {$playlist->Name} playlist was successfully deleted"
             );
     }
 }
