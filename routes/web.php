@@ -70,6 +70,8 @@ Route::get('/playlists/{id}', 'PlaylistController@show');
 
 Route::get('/signup', 'RegisterController@showRegistrationForm');
 Route::post('/signup', 'RegisterController@register');
+Route::get('/login', 'LoginController@showLoginForm')->name('login');
+Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LogoutController');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');

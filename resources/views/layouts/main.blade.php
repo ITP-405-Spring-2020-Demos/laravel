@@ -23,10 +23,6 @@
             <li class="nav-item">
               <a href="/profile" class="nav-link">Profile</a>
             </li>
-          @else
-            <li class="nav-item">
-              <a href="/signup" class="nav-link">Sign Up</a>
-            </li>
           @endif
           <li class="nav-item">
             <a class="nav-link" href="/playlists">Playlists</a>
@@ -39,7 +35,14 @@
           </li>
           @if (Auth::check())
             <li class="nav-item">
-                <a href="/logout" class="nav-link">Logout</a>
+              <a href="/logout" class="nav-link">Logout</a>
+            </li>
+          @else
+            <li class="nav-item">
+                <a href="/signup" class="nav-link">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a href="/login" class="nav-link">Login</a>
             </li>
           @endif
         </ul>
