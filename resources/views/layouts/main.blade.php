@@ -37,6 +37,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/invoices">Invoices</a>
           </li>
+          @if (Auth::check())
+            <li class="nav-item">
+                <a href="/logout" class="nav-link">Logout</a>
+            </li>
+          @endif
         </ul>
         </div>
         <div class="col-9">
