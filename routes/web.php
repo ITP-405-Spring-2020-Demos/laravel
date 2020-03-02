@@ -67,3 +67,8 @@ Route::post('/albums/{id}/delete', 'AlbumController@destroy');
 
 Route::get('/playlists', 'PlaylistController@index');
 Route::get('/playlists/{id}', 'PlaylistController@show');
+
+Route::get('/signup', 'RegisterController@showRegistrationForm');
+Route::post('/signup', 'RegisterController@register');
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
