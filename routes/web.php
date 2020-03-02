@@ -74,4 +74,9 @@ Route::get('/login', 'LoginController@showLoginForm')->name('login');
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LogoutController');
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
+// Route::get('/profile', 'ProfileController@index')->name('profile')->middleware(['auth']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+});
+
