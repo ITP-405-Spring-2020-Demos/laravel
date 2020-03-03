@@ -16,21 +16,36 @@
         <div class="row">
             <div class="col-3">
             <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/playlists">Playlists</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/albums">Albums</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/tracks">Tracks</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/invoices">Invoices</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/playlists">Playlists</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/albums">Albums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tracks">Tracks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/invoices">Invoices</a>
+                </li>
+                @if (Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Log Out</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Sign Up</a>
+                    </li>
+                @endif
             </ul>
             </div>
             <div class="col-9">
