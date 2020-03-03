@@ -4,6 +4,7 @@ use App\Artist;
 use App\Track;
 use App\Genre;
 use App\Album;
+use App\Playlist;
 
 // uncomment the boot method in AppServiceProvider to see SQL queries
 Route::get('/eloquent', function() {
@@ -43,14 +44,35 @@ Route::get('/eloquent', function() {
     // return Track::find(1837)->genre; // Metal
     // return Genre::find(3)->tracks; // 3 = Metal
 
-    $tracks = Track::with(['genre', 'album'])
-        ->where('UnitPrice', '>', 0.99)
-        ->orderBy('Name')
-        ->get();
+    // $tracks = Track::with(['genre', 'album'])
+    //     ->where('UnitPrice', '>', 0.99)
+    //     ->orderBy('Name')
+    //     ->get();
 
-    return view('eloquent', [
-        'tracks' => $tracks
-    ]);
+    // return view('eloquent', [
+    //     'tracks' => $tracks
+    // ]);
+
+    // RELATIONSHIPS (MANY TO MANY)
+    // return Playlist::all();
+    // return Playlist::find(17); // Heavy Metal Classic
+    // return Playlist::find(17)->tracks;
+    // return Track::find(1837)->playlists; // Seek and Destroy
+
+    // UPDATING A BELONGS TO RELATIONSHIP
+    // $track = Track::find(1837); // Seek and Destroy
+    // $track->genre()->associate(Genre::find(1));
+    // $track->save();
+    // return $track;
+
+    // REMOVING FROM A MANY TO MANY RELATIONSHIP
+    // return Playlist::find(17)->tracks;
+    // Playlist::find(17)->tracks()->detach(Track::find(3290));
+    // return Playlist::find(17)->tracks;
+
+    // ADDING TO A MANY TO MANY RELATIONSHIP
+    Playlist::find(17)->tracks()->attach(Track::find(3290));
+    return Playlist::find(17)->tracks;
 });
 
 Route::get('/', function () {

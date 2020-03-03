@@ -20,4 +20,11 @@ class Track extends Model
         // AlbumId is the FK column
         return $this->belongsTo('App\Album', 'AlbumId'); // default is album_id
     }
+
+    public function playlists()
+    {
+        // 3rd arg is the FK name of the model on which you are defining the relationship
+        // 4th arg is the FK name of the model that you are joining to
+        return $this->belongsToMany('App\Playlist', 'playlist_track', 'TrackId', 'PlaylistId');
+    }
 }
