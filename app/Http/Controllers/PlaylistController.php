@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Playlist;
 
 class PlaylistController extends Controller
 {
@@ -16,8 +17,10 @@ class PlaylistController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Playlist $playlist)
     {
+        $id = $playlist->PlaylistId;
+
         $tracks = DB::table('playlist_track')
             ->select(
                 'tracks.Name as TrackName',
@@ -33,10 +36,6 @@ class PlaylistController extends Controller
             ->join('media_types', 'tracks.MediaTypeId', 'media_types.MediaTypeId')
             ->where('PlaylistId', '=', $id)
             ->get();
-
-        $playlist = DB::table('playlists')
-            ->where('PlaylistId', '=', $id)
-            ->first();
 
         return view('playlist.show', [
             'playlist' => $playlist,
