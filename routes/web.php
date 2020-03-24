@@ -96,7 +96,7 @@ Route::get('/playlists/{id}/delete', 'PlaylistController@showDeleteConfirmation'
     ->name('playlist.delete-confirmation');
 Route::post('/playlists/{id}/delete', 'PlaylistController@delete')
     ->name('playlist.delete');
-Route::get('/playlists/{id}', 'PlaylistController@show')->name('playlist');
+Route::get('/playlists/{playlist}', 'PlaylistController@show')->name('playlist');
 
 Route::get('/tracks', 'TrackController@index');
 Route::get('/tracks/{id}/add-to-playlist', 'TrackController@showAddToPlaylistForm');
